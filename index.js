@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseKey = process.env.CHAVE_DA_FUNCAO_DO_SERVICO_SUPABASE;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.post('/webhook-shopify', async (req, res) => {
