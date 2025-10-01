@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: SIGME API
+  version: 0.1.0
+  description: API mínima para regras SIGME, eventos e painel admin.
+servers:
+  - url: https://api.example.com
+paths:
+  /admin/rules:
+    get:
+      summary: Obter configuração atual
+      operationId: getRules
+      responses:
+        '200':
+          description: Configuração
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      summary: Atualizar configuração (auditável)
+      operationId: updateRules
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200': { description: Atualizado }
+  /events/activation:
+    post:
+      summary: Registrar ativação mensal
+      operationId: postActivation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [event_id, user_id, period_month, amount]
+              properties:
+                event_id: { type: string }
+                user_id: { type: string }
+                period_month: { type: string, format: date }
+                amount: { type: number }
+      responses:
+        '202': { description: Aceito }
+  /events/drop-sale:
+    post:
+      summary: Registrar venda DROP
+      operationId: postDropSale
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [event_id, user_id, period_month, units, unit_price]
+              properties:
+                event_id: { type: string }
+                user_id: { type: string }
+                period_month: { type: string, format: date }
+                units: { type: integer }
+                unit_price: { type: number }
+      responses:
+        '202': { description: Aceito }
+  /reports/matrix:
+    get:
+      summary: Relatório de blocos/ciclos
+      operationId: getMatrixReport
+      parameters:
+        - in: query
+          name: month
+          schema: { type: string, format: date }
+      responses:
+        '200': { description: OK }
+  /reports/career:
+    get:
+      summary: Relatório de carreira (PINs)
+      operationId: getCareerReport
+      parameters:
+        - in: query
+          name: month
+          schema: { type: string, format: date }
+      responses:
+        '200': { description: OK }
+  /reports/top-sigme:
+    get:
+      summary: Ranking TOP SIGME
+      operationId: getTopSigme
+      parameters:
+        - in: query
+          name: month
+          schema: { type: string, format: date }
+      responses:
+        '200': { description: OK }
+  /users/{id}/extract:
+    get:
+      summary: Extrato de pagamentos do consultor
+      operationId: getUserExtract
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+        - in: query
+          name: month
+          schema: { type: string, format: date }
+      responses:
+        '200': { description: OK }
+
+  /marte/events/network-cycle:
+    post:
+      summary: Registrar ciclo da rede (Marte)
+      operationId: postMarteNetworkCycle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [event_id, origin_user_id, occurred_at, base_amount]
+              properties:
+                event_id: { type: string }
+                origin_user_id: { type: string }
+                occurred_at: { type: string, format: date-time }
+                base_amount: { type: number }
+      responses:
+        '202': { description: Aceito }
+
+  /reports/marte/month:
+    get:
+      summary: Relatório mensal Marte
+      operationId: getMarteMonth
+      parameters:
+        - in: query
+          name: month
+          schema: { type: string, format: date }
+      responses:
+        '200': { description: OK }
+
+  /reports/marte/quarter:
+    get:
+      summary: Relatório trimestral Marte (PINs)
+      operationId: getMarteQuarter
+      parameters:
+        - in: query
+          name: quarter
+          schema: { type: string, example: '2025-Q3' }
+      responses:
+        '200': { description: OK }
+
+  /users/{id}/marte/status:
+    get:
+      summary: Status trimestral do consultor (Marte)
+      operationId: getMarteStatus
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+        - in: query
+          name: quarter
+          schema: { type: string, example: '2025-Q3' }
+      responses:
+        '200': { description: OK }

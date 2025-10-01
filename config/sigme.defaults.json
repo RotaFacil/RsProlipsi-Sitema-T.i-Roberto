@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "currency": "BRL",
+  "timezone": "America/Sao_Paulo",
+  "close_window": {
+    "type": "monthly",
+    "close_at": "23:59",
+    "day": "last",
+    "timezone": "America/Sao_Paulo"
+  },
+  "matrix": {
+    "activation_min_value": 60.0,
+    "cycle_base": 180.0,
+    "shape": "3x2",
+    "spillover": true,
+    "compression": "dynamic",
+    "reentry_mode": "auto",
+    "retroactivity": {
+      "personal_matrix": false,
+      "network_monthly": true
+    },
+    "payouts": {
+      "self": 0.60,
+      "l1": 0.10,
+      "l2": 0.05,
+      "l3": 0.05
+    }
+  },
+  "career": {
+    "active_required": true,
+    "retroactivity_until_close": true,
+    "payment_frequency": "monthly",
+    "pins": [
+      { "name": "Bronze", "cycles": 5, "bonus": 45.00, "units": 45, "gross": 2700.00, "net": 2745.00 },
+      { "name": "Prata", "cycles": 10, "bonus": 90.00, "units": 90, "gross": 5400.00, "net": 5490.00 },
+      { "name": "Ouro", "cycles": 20, "bonus": 180.00, "units": 180, "gross": 43200.00, "net": 43380.00 },
+      { "name": "Rubi", "cycles": 35, "bonus": 315.00, "units": 315, "gross": 18900.00, "net": 19215.00 },
+      { "name": "Safira", "cycles": 84, "bonus": 756.00, "units": 756, "gross": 45360.00, "net": 46116.00 },
+      { "name": "Esmeralda", "cycles": 210, "bonus": 1890.00, "units": 1890, "gross": 113400.00, "net": 115290.00 },
+      { "name": "Diamante", "cycles": 490, "bonus": 4410.00, "units": 4410, "gross": 264600.00, "net": 269010.00 },
+      { "name": "Duplo Diamante", "cycles": 1050, "bonus": 9450.00, "units": 9450, "gross": 567000.00, "net": 576450.00 },
+      { "name": "Triplo Diamante", "cycles": 2100, "bonus": 18900.00, "units": 18900, "gross": 1134000.00, "net": 1152900.00 },
+      { "name": "Diamante Red", "cycles": 5250, "bonus": 47250.00, "units": 47250, "gross": 2835000.00, "net": 2882250.00 },
+      { "name": "Diamante Blue", "cycles": 10500, "bonus": 94500.00, "units": 94500, "gross": 5670000.00, "net": 5764500.00 },
+      { "name": "Diamante Black", "cycles": 21000, "bonus": 189000.00, "units": 189000, "gross": 11340000.00, "net": 11529000.00 }
+    ]
+  },
+  "top_sigme": {
+    "must_be_active": true,
+    "pool_percent": 0.09,
+    "distribution": [0.02, 0.015, 0.012, 0.01, 0.008, 0.007, 0.006, 0.005, 0.004, 0.003],
+    "tie_breakers": [
+      "higher_L0",
+      "later_last_cycle",
+      "shorter_cycle_window",
+      "audit_lottery"
+    ],
+    "rounding": "half_up_2dp",
+    "credit_label": "TOP_SIGME",
+    "pay_delay_business_days": 2
+  },
+  "drop": {
+    "active_required": true,
+    "price_per_unit": 60.00,
+    "tiers": [
+      { "min": 0, "max": 100, "percent": 0.25 },
+      { "min": 101, "max": 1000, "percent": 0.27 },
+      { "min": 1001, "max": 5000, "percent": 0.32 },
+      { "min": 5001, "max": 10000, "percent": 0.35 },
+      { "min": 10001, "max": null, "percent": 0.38 }
+    ],
+    "retroactivity": false,
+    "units_feed": {
+      "career_pins": true,
+      "matrix": true
+    }
+  },
+  "marte": {
+    "enabled": true,
+    "cycle_base_brl": 180.0,
+    "network_payouts": { "l1": 0.05, "l2": 0.03, "l3": 0.02 },
+    "per_cycle_reward_brl": 2.70,
+    "active_required_for_monthly_payouts": true,
+    "required_one_direct_ever_active": true,
+    "quarter_close": {
+      "timezone": "America/Sao_Paulo",
+      "close_rule": "calendar_quarter_last_day_23_59"
+    },
+    "pins": [
+      { "name": "Pin Bronze", "cycles_required": 5, "reward_total_brl": 13.50 },
+      { "name": "Pin Prata", "cycles_required": 15, "reward_total_brl": 40.50 },
+      { "name": "Pin Ouro", "cycles_required": 70, "reward_total_brl": 189.00 },
+      { "name": "Pin Safira", "cycles_required": 150, "reward_total_brl": 405.00 },
+      { "name": "Pin Esmeralda", "cycles_required": 300, "reward_total_brl": 810.00 },
+      { "name": "Pin Topázio", "cycles_required": 500, "reward_total_brl": 1350.00 },
+      { "name": "Pin Rubi", "cycles_required": 750, "reward_total_brl": 2025.00 },
+      { "name": "Pin Diamante", "cycles_required": 1500, "reward_total_brl": 4050.00 },
+      { "name": "Pin Diamante Duplo", "cycles_required": 3000, "reward_total_brl": 18450.00 },
+      { "name": "Pin Diamante Triplo", "cycles_required": 5000, "reward_total_brl": 36450.00 },
+      { "name": "Pin Diamante Red", "cycles_required": 15000, "reward_total_brl": 105300.00 },
+      { "name": "Pin Diamante Blue", "cycles_required": 25000, "reward_total_brl": 67500.00 },
+      { "name": "Pin Diamante Black", "cycles_required": 50000, "reward_total_brl": 135000.00 }
+    ]
+  },
+  "admin": {
+    "editable": [
+      "matrix.activation_min_value",
+      "matrix.cycle_base",
+      "matrix.payouts",
+      "matrix.spillover",
+      "matrix.compression",
+      "career.pins",
+      "top_sigme.pool_percent",
+      "top_sigme.distribution",
+      "top_sigme.tie_breakers",
+      "drop.tiers",
+      "drop.units_feed",
+      "timezone",
+      "close_window"
+    ],
+    "audit_logging": true,
+    "change_notice_days": 30
+  }
+}
